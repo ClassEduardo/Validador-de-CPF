@@ -7,8 +7,14 @@ class ValidaCPF {
       this.clickButtons();
    }
 
-   validadeCpf() {
-      
+   limpaCpf() {
+      const cpfLimpo = this.display.value.replace(/\D+/g, '');
+      return this.validadeCpf(cpfLimpo);
+   }
+
+   validadeCpf(cpfLimpo) {
+      const cpfLimpoRecebido = cpfLimpo;
+      console.log(cpfLimpoRecebido)
    }
 
    clickButtons() {
@@ -17,13 +23,19 @@ class ValidaCPF {
 
          if(elem.classList.contains('btn_clear')) this.clearDisplay();
 
-         if(elem.classList.contains('btn_validate')) this.validadeCpf();
+         if(elem.classList.contains('btn_validate')) this.limpaCpf();
 
       })
    };
 
-
 }
 
-const cpfEnviado = new ValidaCPF(input_Cpf_String);
-cpfEnviado.iniciar();
+const cpf = new ValidaCPF();
+cpf.iniciar();
+/*
+705.484.450-52 070.987.720-03
+
+11 - (237 % 11) = 5 (Primeiro dígito)
+
+11 - (284 % 11) = 5 (Primeiro dígito)
+*/
