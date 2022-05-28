@@ -5,5 +5,31 @@
 }
 
 body {
-   background-color: darkcyan;
+   background-image: url(/assets/img/layered-peaks-haikei.svg);
+   background-size: auto;
+}
+
+.section_valida{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-top: 25%;
+}
+
+.display {
+   width: 100%;
+}
+
+.buttons{
+   margin-top: 10px;
+}
+
+.btn {
+   width: 49.1%;
+   font-size: 22px;
+}
+
+p {
+   margin-top: 10px;
+   font-size: 19px;
 }

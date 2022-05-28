@@ -2,27 +2,44 @@ class ValidaCPF {
    constructor() {
       this.display = document.querySelector('.display');
       this.div = document.querySelector('.result')
+      this.resultLength = 0;
    }
-
+   
    iniciar() {
       this.clickButtons();
       this.checkChar();
    }
+   
+   clearDiv() {
+      return this.div = '';
+   }
 
+   preparaCpf() {
+      const cpfLimpo = this.display.value.replace(/\D+/g, '');
 
+      this.resultLength ++;
+      if (this.resultLength > 1) {
+         this.clearDiv();
+      }
+      return this.testCpf(cpfLimpo);
+   }
+
+   
    cpfValid() {
       const textSucesP = document.createElement('p');
       textSucesP.innerHTML = ('Cpf validado com sucesso.');
       textSucesP.setAttribute('class', 'text-success');
-      return this.div.appendChild(textSucesP);
 
+
+      return this.div.appendChild(textSucesP);
    }
 
    cpfInvalid() {
       const textFailP = document.createElement('p');
       textFailP.innerHTML = ('Cpf invalido.')
       textFailP.setAttribute('class', 'text-danger');
-      this.div.appendChild(textFailP);
+
+      return this.div.appendChild(textFailP);
    }
 
 
@@ -39,10 +56,6 @@ class ValidaCPF {
       })
    }
 
-   preparaCpf() {
-      const cpfLimpo = this.display.value.replace(/\D+/g, '');
-      return this.testCpf(cpfLimpo);
-   }
 
    testCpf(cpfLimpo) {
       const cpfLimpoRecebido = cpfLimpo;
@@ -52,10 +65,10 @@ class ValidaCPF {
       
 
       const cpfLimpoTestado = cpfLimpo
-      return this.validadeCpf(cpfLimpoTestado);
+      return this.contaCpf(cpfLimpoTestado);
    }
 
-   validadeCpf(cpfLimpoTestado) {
+   contaCpf(cpfLimpoTestado) {
       const cpfLimpoRecebido = cpfLimpoTestado;
 
       const cpfParcial = cpfLimpoRecebido.slice(0, -2)
@@ -79,18 +92,11 @@ class ValidaCPF {
       return digito > 9 ? 0 : digito;
    }
 
-   clearDisplay() {
-      this.display.value =+ '';
-   }
-
    clickButtons() {
       document.addEventListener('click', e => {
          const elem = e.target;
 
-         if(elem.classList.contains('btn_clear')) this.clearDisplay();
-
          if(elem.classList.contains('btn_validate')) this.preparaCpf();
-
       })
    };
 }

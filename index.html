@@ -10,16 +10,26 @@
 </head>
 <body>
 
-   <main>
-      <section>
-         <div>
-            <h1>insira seu CPF</h1>
-            <input type="text" name="display" id="display" class="display">
-            <div class="result">
-               <p >sla</p>
+   <main class="container">
+      <section class="row section_valida">
+
+         <div class="card" style="width: 20rem;">
+
+            <div class="card-body">
+
+               <h1 class="card-title">Insira seu CPF</h1>
+
+               <input type="text" name="display" id="display" class="display">
+
+               <div class="result">
+               </div>
+
+               <div class="buttons"></div>
+                  <button class="btn_validate btn btn-primary">Verificar</button>
+                  <button onclick="window.location.reload()" class="btn_clear btn btn-secondary">Reset</button>
+               </div>
+
             </div>
-            <button class="btn_clear">Limpar</button>
-            <button class="btn_validate">Verificar</button>
          </div>
       </section>
    </main>
